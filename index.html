@@ -4,50 +4,46 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Yash Abhay Gujar — high-speed aerodynamics research: supersonic and hypersonic flows, shock-wave/boundary-layer interaction, aerospike drag reduction.">
-<style>html{color-scheme:light}img{max-width:100%}</style>
+<style>html{color-scheme:light}img,video{max-width:100%}</style>
 <title>Yash Gujar — High-Speed Aerodynamics</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: single measured column; a left hairline rail carries section labels, echoing a shock-angle datum line. */
+/* Layout: one plain measured column, academic homepage. Sections open with a hairline rule; figures run wider than the text. */
 :root{
-  --paper:#F7F6F3;
-  --surface:#FFFFFF;
-  --ink:#16181C;
-  --ink-soft:#54585F;
-  --rule:#D9D7D1;
-  --accent:#1B4D8F;
-  --oxide:#9C4421;
-  --chip:#ECEAE4;
+  --paper:#FCFCFB;
+  --ink:#15171A;
+  --ink-soft:#5A5F66;
+  --ink-faint:#8A9097;
+  --rule:#DCDCD8;
+  --accent:#12457A;
+  --well:#F2F2EF;
   color-scheme: light;
 
-  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#111317;
-    --surface:#171A1F;
-    --ink:#ECEDEF;
-    --ink-soft:#9BA1AA;
-    --rule:#2B2F36;
-    --accent:#7FA9E0;
-    --oxide:#D98B63;
-    --chip:#21252B;
+    --paper:#121416;
+    --ink:#E7E8EA;
+    --ink-soft:#A2A8B0;
+    --ink-faint:#767C84;
+    --rule:#2A2E33;
+    --accent:#79ADDD;
+    --well:#1A1D21;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#111317;
-  --surface:#171A1F;
-  --ink:#ECEDEF;
-  --ink-soft:#9BA1AA;
-  --rule:#2B2F36;
-  --accent:#7FA9E0;
-  --oxide:#D98B63;
-  --chip:#21252B;
+  --paper:#121416;
+  --ink:#E7E8EA;
+  --ink-soft:#A2A8B0;
+  --ink-faint:#767C84;
+  --rule:#2A2E33;
+  --accent:#79ADDD;
+  --well:#1A1D21;
   color-scheme: dark;
 }
 
@@ -55,235 +51,195 @@
 body{
   background:var(--paper);
   color:var(--ink);
-  font-family:var(--body);
-  font-size:16px;
-  line-height:1.6;
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.62;
   margin:0;
   padding-left:max(16px,env(safe-area-inset-left,0px));
   padding-right:max(16px,env(safe-area-inset-right,0px));
   padding-block:0;
   -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:62rem;margin:0 auto}
+.wrap{max-width:54rem;margin:0 auto}
+.text{max-width:38rem}
 
-/* ---- masthead ---- */
-header.mast{
-  padding-block:3.5rem 2rem;
-  border-bottom:1px solid var(--rule);
-}
-.eyebrow{
-  font-family:var(--mono);
-  font-size:.72rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  margin:0 0 1.1rem;
-}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(128,128,128,.35)}
+a:hover{border-bottom-color:currentColor}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---- head ---- */
+header{padding-block:3.5rem 2.25rem}
 h1{
-  font-family:var(--display);
+  font-family:var(--serif);
   font-weight:700;
-  font-size:clamp(2.4rem,7vw,4rem);
-  line-height:1.02;
-  letter-spacing:-.025em;
-  margin:0 0 1rem;
-  text-wrap:balance;
+  font-size:clamp(2.1rem,5.5vw,2.9rem);
+  line-height:1.1;
+  letter-spacing:-.01em;
+  margin:0 0 .35rem;
 }
-.lede{
-  font-size:clamp(1.02rem,2.2vw,1.18rem);
+.sub{
+  font-size:1.02rem;
   color:var(--ink-soft);
-  max-width:40rem;
-  margin:0 0 1.75rem;
+  margin:0 0 1.5rem;
+  max-width:38rem;
 }
-.lede strong{color:var(--ink);font-weight:600}
-
-.facts{
-  display:flex;
-  flex-wrap:wrap;
-  gap:0 2.25rem;
-  font-family:var(--mono);
-  font-size:.8rem;
-  color:var(--ink-soft);
-  margin:0 0 1.75rem;
-  padding:0;
-  list-style:none;
-}
-.facts li{display:flex;gap:.5rem;align-items:baseline;min-width:0}
-.facts b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
-
-.contact{display:flex;flex-wrap:wrap;gap:.6rem}
-.btn{
+.intro{font-size:1.08rem;margin:0 0 1.5rem;max-width:38rem}
+.line{
   font-family:var(--mono);
   font-size:.78rem;
-  letter-spacing:.02em;
-  text-decoration:none;
-  color:var(--ink);
-  border:1px solid var(--rule);
-  background:var(--surface);
-  border-radius:2px;
-  padding:.45rem .8rem;
-  display:inline-flex;
-  align-items:center;
-  gap:.4rem;
-  min-width:0;
-  word-break:break-all;
+  color:var(--ink-soft);
+  line-height:1.9;
+  margin:0;
 }
-.btn:hover{border-color:var(--accent);color:var(--accent)}
-.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}
-.btn.primary:hover{opacity:.88;color:var(--paper)}
-button.btn{cursor:pointer;font-family:var(--mono)}
+.line b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.line a{border-bottom-color:rgba(128,128,128,.3)}
+.copy{
+  font:inherit;
+  color:var(--accent);
+  background:none;
+  border:0;
+  border-bottom:1px solid rgba(128,128,128,.35);
+  padding:0;
+  cursor:pointer;
+}
+.copy:hover{border-bottom-color:currentColor}
 
 /* ---- sections ---- */
-section{
-  padding-block:2.75rem;
-  border-bottom:1px solid var(--rule);
+section{padding-block:2.25rem;border-top:1px solid var(--rule)}
+h2{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:1.32rem;
+  letter-spacing:-.005em;
+  margin:0 0 1rem;
+  line-height:1.25;
 }
-section:last-of-type{border-bottom:0}
-.sec-head{
-  display:grid;
-  grid-template-columns:9.5rem 1fr;
-  gap:1.5rem;
-  align-items:start;
-}
-@media (max-width:760px){
-  .sec-head{grid-template-columns:1fr;gap:.75rem}
-}
-.sec-label{
+h3{
   font-family:var(--mono);
-  font-size:.72rem;
-  letter-spacing:.14em;
+  font-weight:500;
+  font-size:.74rem;
+  letter-spacing:.1em;
   text-transform:uppercase;
   color:var(--ink-soft);
-  padding-top:.35rem;
-  border-top:2px solid var(--ink);
-  min-width:0;
+  margin:1.8rem 0 .6rem;
 }
-h2{
-  font-family:var(--display);
-  font-weight:600;
-  font-size:1.5rem;
-  letter-spacing:-.015em;
-  margin:0 0 .85rem;
-  line-height:1.2;
-}
-.sec-body{min-width:0}
-.sec-body > p{max-width:40rem;margin:0 0 1rem}
-.sec-body > p:last-child{margin-bottom:0}
+section > p, .text p{margin:0 0 .95rem}
+section > p:last-child{margin-bottom:0}
+.num{font-variant-numeric:tabular-nums}
 
-/* ---- publication list ---- */
-.pubs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.4rem}
-.pub{display:grid;grid-template-columns:2.2rem 1fr;gap:.9rem;min-width:0}
-.pub-id{
+/* ---- publications ---- */
+ol.pubs{list-style:none;margin:0;padding:0;counter-reset:pub}
+ol.pubs li{
+  counter-increment:pub;
+  position:relative;
+  padding-left:2.4rem;
+  margin-bottom:1.15rem;
+  max-width:42rem;
+}
+ol.pubs li::before{
+  content:counter(pub) ".";
+  position:absolute;
+  left:0;
+  top:.15rem;
   font-family:var(--mono);
-  font-size:.75rem;
-  color:var(--ink-soft);
-  padding-top:.2rem;
+  font-size:.78rem;
+  color:var(--ink-faint);
   font-variant-numeric:tabular-nums;
 }
-.pub-main{min-width:0}
-.pub-title{font-weight:600;line-height:1.35;margin:0 0 .25rem}
-.pub-meta{font-size:.9rem;color:var(--ink-soft);margin:0 0 .45rem}
-.pub-meta em{font-style:italic;color:var(--ink)}
-.pub-authors{font-size:.85rem;color:var(--ink-soft);margin:0 0 .45rem}
-.pub-authors .me{color:var(--ink);font-weight:600}
-.pub-foot{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
-
-.chip{
-  font-family:var(--mono);
-  font-size:.68rem;
-  letter-spacing:.07em;
-  text-transform:uppercase;
-  padding:.18rem .5rem;
-  border-radius:2px;
-  background:var(--chip);
-  color:var(--ink-soft);
-  white-space:nowrap;
-}
-.chip.out{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px currentColor}
-.chip.work{background:transparent;color:var(--oxide);box-shadow:inset 0 0 0 1px currentColor}
-a.doi{
+.pubs .au{color:var(--ink-soft)}
+.pubs .au b{color:var(--ink);font-weight:700}
+.pubs .ti{display:block;margin:.1rem 0}
+.pubs .src{color:var(--ink-soft)}
+.pubs .src em{font-style:italic}
+.pubs .st{
   font-family:var(--mono);
   font-size:.72rem;
-  color:var(--accent);
-  text-decoration:none;
-  border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent);
-  word-break:break-all;
+  color:var(--ink-faint);
+  letter-spacing:.02em;
+  display:block;
+  margin-top:.18rem;
 }
-a.doi:hover{border-bottom-color:currentColor}
 
-/* ---- experience ---- */
-.roles{display:flex;flex-direction:column;gap:1.8rem}
-.role{min-width:0}
-.role-top{display:flex;flex-wrap:wrap;gap:.25rem 1rem;align-items:baseline;margin-bottom:.15rem}
-.role-title{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:-.01em}
-.role-when{font-family:var(--mono);font-size:.74rem;color:var(--ink-soft);white-space:nowrap}
-.role-where{font-size:.9rem;color:var(--ink-soft);margin:0 0 .6rem}
-.role ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.4rem}
-.role li{padding-left:.15rem}
-.num{font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:.95em}
-
-/* ---- methods ---- */
-.methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.4rem}
-.method h3{
+/* ---- roles ---- */
+.role{margin-bottom:1.8rem;max-width:42rem}
+.role:last-child{margin-bottom:0}
+.role h4{
+  font-family:var(--serif);
+  font-size:1.05rem;
+  font-weight:600;
+  margin:0 0 .1rem;
+  line-height:1.3;
+}
+.role .when{
   font-family:var(--mono);
-  font-size:.72rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  margin:0 0 .5rem;
-  font-weight:500;
+  font-size:.74rem;
+  color:var(--ink-faint);
+  display:block;
+  margin-bottom:.5rem;
 }
-.method p{margin:0;font-size:.94rem}
+.role ul{margin:0;padding-left:1.1rem}
+.role li{margin-bottom:.4rem}
 
-/* ---- seeking ---- */
-.seek{
-  background:var(--surface);
-  border:1px solid var(--rule);
-  border-left:3px solid var(--accent);
-  padding:1.25rem 1.4rem;
-  border-radius:2px;
+/* ---- figures / video ---- */
+figure{margin:0 0 2.25rem}
+figure:last-child{margin-bottom:0}
+.vgrid{display:grid;gap:.75rem}
+.vgrid.two{grid-template-columns:repeat(2,1fr)}
+.vgrid.four{grid-template-columns:repeat(2,1fr)}
+@media (max-width:640px){
+  .vgrid.two,.vgrid.four{grid-template-columns:1fr}
 }
-.seek p{margin:0 0 .6rem;max-width:40rem}
-.seek p:last-child{margin-bottom:0}
-
-/* ---- figures ---- */
-.figs{display:flex;flex-direction:column;gap:2rem}
-figure{margin:0;min-width:0}
-figure img{
+.vcell{min-width:0}
+.vcell video{
   display:block;
   width:100%;
   height:auto;
-  max-width:100%;
+  background:#fff;
   border:1px solid var(--rule);
   border-radius:2px;
-  background:#fff;
 }
-figcaption{
-  margin-top:.6rem;
-  font-size:.86rem;
+.vcell .cap{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.03em;
   color:var(--ink-soft);
-  max-width:46rem;
+  margin-top:.35rem;
+}
+.vcell .cap b{color:var(--ink);font-weight:500}
+figcaption{
+  margin-top:.9rem;
+  font-size:.95rem;
+  color:var(--ink-soft);
+  max-width:40rem;
   line-height:1.55;
 }
-figcaption b{
+figcaption .lab{
   font-family:var(--mono);
   font-size:.72rem;
   letter-spacing:.08em;
   text-transform:uppercase;
   color:var(--ink);
-  font-weight:500;
   display:block;
-  margin-bottom:.2rem;
+  margin-bottom:.25rem;
 }
 
+/* ---- misc ---- */
+.well{
+  background:var(--well);
+  padding:1.1rem 1.25rem;
+  max-width:42rem;
+}
+.well p{margin:0 0 .6rem}
+.well p:last-child{margin:0}
 footer{
-  padding-block:2rem 3rem;
+  padding-block:1.75rem 3rem;
+  border-top:1px solid var(--rule);
   font-family:var(--mono);
   font-size:.74rem;
-  color:var(--ink-soft);
+  color:var(--ink-faint);
   display:flex;
   flex-wrap:wrap;
-  gap:.5rem 1.5rem;
+  gap:.4rem 1.5rem;
   justify-content:space-between;
 }
 .toast{
@@ -294,9 +250,8 @@ footer{
   background:var(--ink);
   color:var(--paper);
   font-family:var(--mono);
-  font-size:.75rem;
-  padding:.5rem .9rem;
-  border-radius:2px;
+  font-size:.74rem;
+  padding:.45rem .85rem;
   z-index:20;
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -307,279 +262,209 @@ footer{
 
 <div class="wrap">
 
-<header class="mast">
-  <p class="eyebrow">Amity University Uttar Pradesh · B.Tech. Aerospace, 2027</p>
+<header>
   <h1>Yash Abhay Gujar</h1>
-  <p class="lede">I work on <strong>high-speed aerodynamics</strong>: shock-wave/boundary-layer interaction, supersonic intake unstart, and aerospike drag reduction — using scale-resolving CFD and hypersonic wind-tunnel schlieren together, rather than one or the other.</p>
-  <ul class="facts">
-    <li>GATE 2026 Aerospace <b>AIR 102</b></li>
-    <li>CGPA <b>7.93 / 10</b></li>
-    <li>Class rank <b>4 of 30</b></li>
-    <li>First-author Q1 <b>Physics of Fluids</b></li>
-  </ul>
-  <div class="contact">
-    <a class="btn primary" href="https://www.linkedin.com/in/yash-gujar-aero">LinkedIn</a>
-    <button class="btn" type="button" data-copy="yashgujar26@gmail.com">yashgujar26@gmail.com</button>
-    <button class="btn" type="button" data-copy="gujar.abhay@s.amity.edu">gujar.abhay@s.amity.edu</button>
-  </div>
+  <p class="sub">High-speed aerodynamics · B.Tech. Aerospace Engineering 2027, Amity Institute of Aerospace Engineering, Noida</p>
+  <p class="intro">I work on shock-wave/boundary-layer interaction, supersonic intake unstart, and aerospike drag reduction — running scale-resolving CFD and hypersonic wind-tunnel schlieren on the same problem rather than one or the other.</p>
+  <p class="line">
+    GATE 2026 Aerospace <b>All India Rank 102</b> · CGPA <b>7.93 / 10</b> · class rank <b>4 of 33</b><br>
+    <button class="copy" type="button" data-copy="yashgujar26@gmail.com">yashgujar26@gmail.com</button> ·
+    <a href="https://www.linkedin.com/in/yash-gujar-aero">LinkedIn</a> ·
+    <a href="https://orcid.org/0009-0008-8712-2532">ORCID 0009-0008-8712-2532</a>
+  </p>
 </header>
 
 <section>
-  <div class="sec-head">
-    <div class="sec-label">01 / Research</div>
-    <div class="sec-body">
-      <h2>What I study</h2>
-      <p>A blunt body at supersonic speed carries a strong detached bow shock, and with it heavy wave drag and severe heating. A forward-facing aerospike replaces that single shock with a system of weaker ones — but it buys the drag reduction at the cost of violent, self-sustained unsteadiness driven by an acoustic feedback loop between the shock and the separated shear layer.</p>
-      <p>Most of my work sits on that trade. I measure it, I try to break the feedback loop without giving back the drag benefit, and I check the answer in two independent ways: detached-eddy simulation on one side, time-resolved schlieren in a Mach 6 Ludwieg tube on the other. The same question — how a shock system and a separated shear layer talk to each other — also drives my work on unstart in mixed-compression intakes.</p>
-    </div>
+  <h2>What I study</h2>
+  <div class="text">
+    <p>A blunt body at supersonic speed carries a strong detached bow shock, and with it heavy wave drag and severe heating. A forward-facing aerospike replaces that single shock with a system of weaker ones — but it buys the drag reduction at the cost of violent, self-sustained unsteadiness, driven by an acoustic feedback loop between the shock and the separated shear layer.</p>
+    <p>Most of my work sits on that trade. I measure it, I try to break the feedback loop without giving back the drag benefit, and I check the answer two independent ways: detached-eddy simulation on one side, time-resolved schlieren in a Mach 6 Ludwieg tube on the other. The same question — how a shock system and a separated shear layer talk to each other — also drives my work on unstart in mixed-compression intakes.</p>
   </div>
 </section>
 
 <section>
-  <div class="sec-head">
-    <div class="sec-label">02 / Results</div>
-    <div class="sec-body">
-      <h2>Selected results</h2>
-      <p>Detached-eddy simulation of a double-disk aerospike on a flat-face cylinder at <span class="num">M∞ = 2.01</span>, run in Ansys Fluent and post-processed through my own MATLAB pipeline.</p>
-      <div class="figs">
-        <figure>
-          <img src="fig-mean-fields.jpg" alt="Three rows of contour plots comparing the baseline aerospike C0 with configuration C1: r.m.s. pressure fluctuation, mean streamwise velocity, and resolved turbulent kinetic energy.">
-          <figcaption><b>Figure 1 — Baseline C0 against configuration C1</b>(a) r.m.s. pressure fluctuation, (b) mean streamwise velocity, (c) resolved turbulent kinetic energy. The second disk splits the separation bubble into two shorter recirculation zones, and both the pressure fluctuation and the turbulent kinetic energy along the shear layer drop sharply against the baseline.</figcaption>
-        </figure>
-        <figure>
-          <img src="fig-cases-xt.jpg" alt="Instantaneous pressure contours for four disk configurations C1 to C4, with the matching space-time diagrams underneath.">
-          <figcaption><b>Figure 2 — Four disk configurations, C1 to C4</b>Instantaneous pressure field (top) with the matching space–time diagram underneath, taken along the spike axis. The diagonal streaks are disturbances convecting downstream along the shear layer; how steep and how regular they are is what separates a configuration that merely reduces drag from one that also calms the flow.</figcaption>
-        </figure>
+  <h2>Simulations</h2>
+
+  <figure>
+    <div class="vgrid two">
+      <div class="vcell">
+        <video src="m6-c0.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Pressure field animation, solid-disk aerospike at Mach 6"></video>
+        <p class="cap"><b>C0</b> — solid disks, no bleed</p>
+      </div>
+      <div class="vcell">
+        <video src="m6-c1.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Pressure field animation, porous-disk aerospike at Mach 6"></video>
+        <p class="cap"><b>C1</b> — porous disks, passive mass bleed</p>
       </div>
     </div>
-  </div>
-</section>
+    <figcaption>
+      <span class="lab">DES at Mach 6 — porous double-disk aerospike</span>
+      Instantaneous pressure field, <span class="num">p/p∞</span>. High stagnation pressure on the disk faces drives a continuous bleed flow through the perforations into the low-pressure inter-disk cavity. The bleed reshapes the shock and shear-layer system and interrupts the acoustic feedback that makes the solid-disk case pulsate. Work presented at the 6th National Aerospace Propulsion Conference, IIT Hyderabad.
+    </figcaption>
+  </figure>
 
-<section>
-  <div class="sec-head">
-    <div class="sec-label">03 / Journals</div>
-    <div class="sec-body">
-      <h2>Journal papers</h2>
-      <ol class="pubs">
-        <li class="pub">
-          <div class="pub-id">J1</div>
-          <div class="pub-main">
-            <p class="pub-title">Staged compression and pneumatic buffering in a tandem-disk aerospike at Mach 2.23</p>
-            <p class="pub-meta"><em>Physics of Fluids</em> <span class="num">38</span>, 106119 (2026) · AIP Publishing · Q1</p>
-            <p class="pub-authors"><span class="me">Y. A. Gujar</span>, A. S. Mehboob, S. Tyagi, Y. Khurana, N. Singh, R. K. Saluja, M. Naagar, B. K. Agarwal, N. K. Gahlot</p>
-            <div class="pub-foot">
-              <span class="chip out">Published</span>
-              <span class="chip">First author</span>
-              <a class="doi" href="https://doi.org/10.1063/5.0342405">doi.org/10.1063/5.0342405</a>
-            </div>
-          </div>
-        </li>
-        <li class="pub">
-          <div class="pub-id">J2</div>
-          <div class="pub-main">
-            <p class="pub-title">Passive flow control of a Mach 4 mixed-compression intake using chevron grooves</p>
-            <p class="pub-meta"><em>FME Transactions</em>, Vol. <span class="num">54</span>, No. 1 (2026) · ESCI · Q2</p>
-            <p class="pub-authors"><span class="me">Y. A. Gujar</span>, S. Tyagi, A. S. Mehboob, N. K. Gahlot</p>
-            <div class="pub-foot">
-              <span class="chip out">Published</span>
-              <span class="chip">First author</span>
-            </div>
-          </div>
-        </li>
-        <li class="pub">
-          <div class="pub-id">J3</div>
-          <div class="pub-main">
-            <p class="pub-title">Robustness analysis of conjugate gradient algorithms in neural-network-based aircraft parameter estimation under measurement uncertainty</p>
-            <p class="pub-meta"><em>Defence Science Journal</em> (2026) · DRDO · SCIE</p>
-            <p class="pub-authors">C. P. Rudesh, S. Singh, P. Srinivas Rao, <span class="me">Y. A. Gujar</span></p>
-            <div class="pub-foot"><span class="chip out">Published</span></div>
-          </div>
-        </li>
-        <li class="pub">
-          <div class="pub-id">J4</div>
-          <div class="pub-main">
-            <p class="pub-title">Parametric DES study of double-disk aerospikes: effects of disk position, size and spike length</p>
-            <p class="pub-meta">Working title · with Hi-SEAL Lab, IIT Hyderabad</p>
-            <p class="pub-authors"><span class="me">Y. A. Gujar</span>, A. S. Mehboob, N. K. Gahlot, S. K. Karthick</p>
-            <div class="pub-foot">
-              <span class="chip work">In preparation</span>
-              <span class="chip">First author</span>
-            </div>
-          </div>
-        </li>
-        <li class="pub">
-          <div class="pub-id">J5</div>
-          <div class="pub-main">
-            <p class="pub-title">Comparative analysis of neural-network optimization algorithms for aircraft parameter estimation</p>
-            <p class="pub-meta">Extended journal version of the IEEE SPACE 2026 paper</p>
-            <p class="pub-authors">C. P. Rudesh, S. Singh, <span class="me">Y. A. Gujar</span></p>
-            <div class="pub-foot"><span class="chip work">In preparation</span></div>
-          </div>
-        </li>
-        <li class="pub">
-          <div class="pub-id">J6</div>
-          <div class="pub-main">
-            <p class="pub-title">Real-flight-data validation of a Bayesian-regularization neural network for longitudinal parameter estimation</p>
-            <p class="pub-meta">HFB-320 flight records</p>
-            <p class="pub-authors">C. P. Rudesh, S. Singh, <span class="me">Y. A. Gujar</span></p>
-            <div class="pub-foot"><span class="chip work">In preparation</span></div>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="sec-head">
-    <div class="sec-label">04 / Conferences</div>
-    <div class="sec-body">
-      <h2>Conference papers</h2>
-      <ol class="pubs">
-        <li class="pub">
-          <div class="pub-id">C1</div>
-          <div class="pub-main">
-            <p class="pub-title">Passive suppression of shock unsteadiness over a double-disk aerospike using porous mass bleed at Mach 6</p>
-            <p class="pub-meta">6th National Aerospace Propulsion Conference (NAPC 2027), IIT Hyderabad, 4–6 Jan 2027 · proceedings with Springer</p>
-            <p class="pub-authors"><span class="me">Y. A. Gujar</span>, A. S. Mehboob, H. Thombare, M. R. K. Reddy, N. K. Gahlot, P. Kolhe, S. K. Karthick</p>
-            <div class="pub-foot">
-              <span class="chip out">Accepted</span>
-              <span class="chip">First author</span>
-            </div>
-          </div>
-        </li>
-        <li class="pub">
-          <div class="pub-id">C2</div>
-          <div class="pub-main">
-            <p class="pub-title">Comparative analysis of conjugate gradient algorithms for neural-network-based aircraft parameter estimation</p>
-            <p class="pub-meta">3rd IEEE SPACE Conference 2026, Bengaluru · IEEE Xplore</p>
-            <p class="pub-authors">C. P. Rudesh, S. Singh, <span class="me">Y. A. Gujar</span></p>
-            <div class="pub-foot">
-              <span class="chip out">Presented</span>
-              <span class="chip">In press</span>
-            </div>
-          </div>
-        </li>
-        <li class="pub">
-          <div class="pub-id">C3</div>
-          <div class="pub-main">
-            <p class="pub-title">Numerical investigation of unsteady flow dynamics over double-disk aerospikes at Mach 2.0</p>
-            <p class="pub-meta">National Symposium on Shock Waves (NSSW 2026), IIT Jodhpur · oral presentation</p>
-            <p class="pub-authors">A. S. Mehboob, <span class="me">Y. A. Gujar</span>, S. Tyagi, M. Joshi, C. P. Rudesh, N. K. Gahlot, S. K. Karthick</p>
-            <div class="pub-foot"><span class="chip out">Accepted</span></div>
-          </div>
-        </li>
-        <li class="pub">
-          <div class="pub-id">C4</div>
-          <div class="pub-main">
-            <p class="pub-title">Upward-chevron groove modifications for passive control of SBLI in a Mach 4 supersonic intake</p>
-            <p class="pub-meta">MRAE 2025, Amity University Noida</p>
-            <p class="pub-authors"><span class="me">Y. A. Gujar</span>, S. Tyagi, A. S. Mehboob, N. K. Gahlot</p>
-            <div class="pub-foot">
-              <span class="chip out">Presented</span>
-              <span class="chip">First author</span>
-            </div>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="sec-head">
-    <div class="sec-label">05 / Experience</div>
-    <div class="sec-body">
-      <h2>Research positions</h2>
-      <div class="roles">
-
-        <div class="role">
-          <div class="role-top">
-            <span class="role-title">Research Intern — Hi-SEAL Lab, IIT Hyderabad</span>
-            <span class="role-when">May 2026 — present</span>
-          </div>
-          <p class="role-where">Mechanical &amp; Aerospace Engineering · Advisor: Prof. S. K. Karthick · on site May–Jul 2026, remote since</p>
-          <ul>
-            <li>DES of a 2D axisymmetric double-disk aerospike at <span class="num">M∞ = 2.01</span> in Ansys Fluent. The spiked-hemisphere baseline gave <span class="num">C<sub>D</sub> = 0.410</span> against <span class="num">0.43</span> measured by Sahoo et al. (AIAA J. 58, 2020), and recovered the <span class="num">−5/3</span> decay in the pressure-fluctuation spectrum.</li>
-            <li>Disk-shape study across four topologies: a flat-cone double disk cut mean <span class="num">C<sub>D</sub></span> from <span class="num">0.410</span> to <span class="num">0.225</span>, but raised the fluctuation amplitude (<span class="num">±1σ 0.059 → 0.104</span>) as the shallow inter-disk cavity let the two recirculation zones intermix.</li>
-            <li>Mach 6 Ludwieg-tunnel campaign (<span class="num">P₀ = 5.5 bar</span>) on a modular porous double-disk aerospike. Perforating the disks produced an intermediate recompression shock and lowered RMS fluctuation along the shear layer and at reattachment.</li>
-            <li>Wrote the MATLAB schlieren pipeline from scratch: Phantom VEO 710L TIFF ingest at <span class="num">77 kHz</span>, two-pass mean and MAD/RMS statistics on a shared calibration, and FFT/PSD for Strouhal and Rossiter-mode identification.</li>
-          </ul>
-        </div>
-
-        <div class="role">
-          <div class="role-top">
-            <span class="role-title">Undergraduate Researcher — High-Speed Flow Control, Amity Noida</span>
-            <span class="role-when">2024 — present</span>
-          </div>
-          <p class="role-where">Advisor: Dr. Neeraj Kumar Gahlot</p>
-          <ul>
-            <li>Tandem-disk aerospike on a blunt body at Mach 2.23: the vortex trapped between the disks acts as a pneumatic buffer and splits one strong shock into a staircase of weaker compressions. In 3D, payload drag fell <span class="num">82.8%</span> against the bare body and <span class="num">42.8%</span> against a single aerospike.</li>
-            <li>Chevron-groove modifications for passive SBLI control in a Mach 4 mixed-compression intake, with 2D and 3D compressible RANS (k-ω SST). Upward chevrons collapsed the throat separation bubble by <span class="num">83%</span> and cut flow distortion by about <span class="num">30%</span>.</li>
-            <li>In progress: unstart mitigation by pressure feedback in a back-pressured intake, taken from RANS to DES; and tangential gas injection for SWBLI control at Mach 2, sweeping injection pressure ratio, injectant temperature and species.</li>
-          </ul>
-        </div>
-
-        <div class="role">
-          <div class="role-top">
-            <span class="role-title">Undergraduate Researcher — Neural-Network Flight Dynamics, Amity Noida</span>
-            <span class="role-when">2025 — 2026</span>
-          </div>
-          <p class="role-where">Advisors: Dr. Sanjay Singh, Mr. C. Parvathi Rudesh</p>
-          <ul>
-            <li>Built the MATLAB feed-forward network framework for aircraft system identification and extraction of stability and control derivatives.</li>
-            <li>Benchmarked conjugate-gradient variants and Bayesian regularization for accuracy under measurement noise, validated against HFB-320 flight data. Three papers published or presented, three more in preparation.</li>
-          </ul>
-        </div>
-
+  <figure>
+    <div class="vgrid four">
+      <div class="vcell">
+        <video src="m2-c1.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Pressure field animation, disk configuration C1 at Mach 2"></video>
+        <p class="cap"><b>C1</b></p>
+      </div>
+      <div class="vcell">
+        <video src="m2-c2.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Pressure field animation, disk configuration C2 at Mach 2"></video>
+        <p class="cap"><b>C2</b></p>
+      </div>
+      <div class="vcell">
+        <video src="m2-c3.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Pressure field animation, disk configuration C3 at Mach 2"></video>
+        <p class="cap"><b>C3</b></p>
+      </div>
+      <div class="vcell">
+        <video src="m2-c4.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Pressure field animation, disk configuration C4 at Mach 2"></video>
+        <p class="cap"><b>C4</b></p>
       </div>
     </div>
+    <figcaption>
+      <span class="lab">DES at Mach 2 — double-disk aerospike, four disk shapes</span>
+      Instantaneous pressure field, <span class="num">p/p∞</span>, for four leading-disk topologies on the same blunt body. The disk shape sets where the flow separates and how the two recirculation zones divide the spike length, which in turn decides whether a configuration only lowers mean drag or also calms the fluctuation. Work accepted for presentation at the National Symposium on Shock Waves.
+    </figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Publications</h2>
+
+  <h3>Journal papers</h3>
+  <ol class="pubs">
+    <li>
+      <span class="au"><b>Y. A. Gujar</b>, A. S. Mehboob, S. Tyagi, Y. Khurana, N. Singh, R. K. Saluja, M. Naagar, B. K. Agarwal, N. K. Gahlot</span>
+      <span class="ti">Staged compression and pneumatic buffering in a tandem-disk aerospike at Mach 2.23</span>
+      <span class="src"><em>Physics of Fluids</em> <span class="num">38</span>, 106119 (2026) · AIP Publishing · Q1 · <a href="https://doi.org/10.1063/5.0342405">doi.org/10.1063/5.0342405</a></span>
+      <span class="st">Published · first author</span>
+    </li>
+    <li>
+      <span class="au"><b>Y. A. Gujar</b>, S. Tyagi, A. S. Mehboob, N. K. Gahlot</span>
+      <span class="ti">Passive flow control of a Mach 4 mixed-compression intake using chevron grooves</span>
+      <span class="src"><em>FME Transactions</em>, Vol. <span class="num">54</span>, No. 1 (2026) · ESCI · Q2 · <a href="https://doi.org/10.5937/fme2601053g">doi.org/10.5937/fme2601053g</a></span>
+      <span class="st">Published · first author</span>
+    </li>
+    <li>
+      <span class="au">C. P. Rudesh, S. Singh, P. Srinivas Rao, <b>Y. A. Gujar</b></span>
+      <span class="ti">Robustness analysis of conjugate gradient algorithms in neural-network-based aircraft parameter estimation under measurement uncertainty</span>
+      <span class="src"><em>Defence Science Journal</em> (2026) · DRDO · SCIE</span>
+      <span class="st">Published · equal contribution with the first author</span>
+    </li>
+    <li>
+      <span class="au"><b>Y. A. Gujar</b>, A. S. Mehboob, N. K. Gahlot, S. K. Karthick</span>
+      <span class="ti">Parametric DES study of double-disk aerospikes: effects of disk position, size and spike length</span>
+      <span class="src">Working title · with Hi-SEAL Lab, IIT Hyderabad</span>
+      <span class="st">In preparation · first author</span>
+    </li>
+    <li>
+      <span class="au">C. P. Rudesh, S. Singh, <b>Y. A. Gujar</b></span>
+      <span class="ti">Comparative analysis of neural-network optimization algorithms for aircraft parameter estimation</span>
+      <span class="src">Extended journal version of the IEEE SPACE 2026 paper</span>
+      <span class="st">In preparation · equal contribution with the first author</span>
+    </li>
+    <li>
+      <span class="au">C. P. Rudesh, S. Singh, <b>Y. A. Gujar</b></span>
+      <span class="ti">Real-flight-data validation of a Bayesian-regularization neural network for longitudinal parameter estimation</span>
+      <span class="src">HFB-320 flight records</span>
+      <span class="st">In preparation · equal contribution with the first author</span>
+    </li>
+  </ol>
+
+  <h3>Conference papers</h3>
+  <ol class="pubs">
+    <li>
+      <span class="au"><b>Y. A. Gujar</b>, A. S. Mehboob, H. Thombare, M. R. K. Reddy, N. K. Gahlot, P. Kolhe, S. K. Karthick</span>
+      <span class="ti">Passive suppression of shock unsteadiness over a double-disk aerospike using porous mass bleed at Mach 6</span>
+      <span class="src">6th National Aerospace Propulsion Conference (NAPC 2027), IIT Hyderabad, 4–6 Jan 2027 · proceedings with Springer</span>
+      <span class="st">Accepted · first author</span>
+    </li>
+    <li>
+      <span class="au">C. P. Rudesh, S. Singh, <b>Y. A. Gujar</b></span>
+      <span class="ti">Comparative analysis of conjugate gradient algorithms for neural-network-based aircraft parameter estimation</span>
+      <span class="src">3rd IEEE SPACE Conference 2026, Bengaluru · IEEE Xplore</span>
+      <span class="st">Presented, in press · equal contribution with the first author</span>
+    </li>
+    <li>
+      <span class="au">A. S. Mehboob, <b>Y. A. Gujar</b>, S. Tyagi, M. Joshi, C. P. Rudesh, N. K. Gahlot, S. K. Karthick</span>
+      <span class="ti">Numerical investigation of unsteady flow dynamics over double-disk aerospikes at Mach 2.0</span>
+      <span class="src">National Symposium on Shock Waves (NSSW 2026), IIT Jodhpur</span>
+      <span class="st">Accepted for oral presentation · equal contribution with the first author</span>
+    </li>
+    <li>
+      <span class="au"><b>Y. A. Gujar</b>, S. Tyagi, A. S. Mehboob, N. K. Gahlot</span>
+      <span class="ti">Upward-chevron groove modifications for passive control of SBLI in a Mach 4 supersonic intake</span>
+      <span class="src">MRAE 2025, Amity University Noida</span>
+      <span class="st">Presented · first author</span>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Research positions</h2>
+
+  <div class="role">
+    <h4>Research Project Student — Hypersonic Experimental Aerodynamics Lab (HEAL), IIT Kanpur</h4>
+    <span class="when">October 2026 – May 2027 · Advisor: Prof. Mohammed Ibrahim Sugarno</span>
+    <ul>
+      <li>Mapping the spike length-to-diameter ratio at which flow over a spiked flat-face cylinder settles from a pulsating to a steady regime.</li>
+      <li>Steady RANS sweep over L/D first, then URANS and DES near the transition to resolve the unsteady behaviour.</li>
+      <li>Species transport next, then wind-tunnel experiments at IIT Kanpur from January 2027.</li>
+    </ul>
+  </div>
+
+  <div class="role">
+    <h4>Research Intern — Hi-SEAL Lab, IIT Hyderabad</h4>
+    <span class="when">May 2026 – present · Advisor: Prof. S. K. Karthick · on site May–Jul 2026, remote since</span>
+    <ul>
+      <li>DES of a 2D axisymmetric double-disk aerospike at <span class="num">M∞ = 2.01</span> in Ansys Fluent. The spiked-hemisphere baseline gave <span class="num">C<sub>D</sub> = 0.410</span> against <span class="num">0.43</span> measured by Sahoo et al. (AIAA J. 58, 2020), and recovered the <span class="num">−5/3</span> decay in the pressure-fluctuation spectrum.</li>
+      <li>Disk-shape study across four topologies: a flat-cone double disk cut mean <span class="num">C<sub>D</sub></span> from <span class="num">0.410</span> to <span class="num">0.225</span>, but raised fluctuation amplitude (<span class="num">±1σ 0.059 → 0.104</span>) as the shallow inter-disk cavity let the two recirculation zones intermix.</li>
+      <li>Mach 6 Ludwieg-tunnel campaign (<span class="num">P₀ = 5.5 bar</span>) on a modular porous double-disk aerospike. Perforating the disks produced an intermediate recompression shock and lowered RMS fluctuation along the shear layer and at reattachment.</li>
+      <li>Wrote the MATLAB schlieren pipeline from scratch: Phantom VEO 710L TIFF ingest at <span class="num">77 kHz</span>, two-pass mean and MAD/RMS statistics on a shared calibration, FFT/PSD for Strouhal and Rossiter-mode identification.</li>
+      <li>Awarded Best Industry Internship, Amity Corporate Meet 2026, for this work.</li>
+    </ul>
+  </div>
+
+  <div class="role">
+    <h4>Undergraduate Researcher — High-Speed Flow Control, Amity Noida</h4>
+    <span class="when">2024 – present · Advisor: Dr. Neeraj Kumar Gahlot</span>
+    <ul>
+      <li>Tandem-disk aerospike on a blunt body at Mach 2.23: the vortex trapped between the disks acts as a pneumatic buffer and splits one strong shock into a staircase of weaker compressions. In 3D, payload drag fell <span class="num">82.8%</span> against the bare body and <span class="num">42.8%</span> against a single aerospike.</li>
+      <li>Chevron-groove modifications for passive SBLI control in a Mach 4 mixed-compression intake, with 2D and 3D compressible RANS (k-ω SST). Upward chevrons collapsed the throat separation bubble by <span class="num">83%</span> and cut flow distortion by about <span class="num">30%</span>.</li>
+      <li>In progress: unstart mitigation by pressure feedback in a back-pressured intake, taken from RANS to DES; and tangential gas injection for SWBLI control at Mach 2.</li>
+    </ul>
+  </div>
+
+  <div class="role">
+    <h4>Undergraduate Researcher — Neural-Network Flight Dynamics, Amity Noida</h4>
+    <span class="when">2025 – 2026 · Advisors: Dr. Sanjay Singh, Mr. C. Parvathi Rudesh</span>
+    <ul>
+      <li>Built the MATLAB feed-forward network framework for aircraft system identification and extraction of stability and control derivatives.</li>
+      <li>Benchmarked conjugate-gradient variants and Bayesian regularization for accuracy under measurement noise, validated against HFB-320 flight data.</li>
+    </ul>
   </div>
 </section>
 
 <section>
-  <div class="sec-head">
-    <div class="sec-label">06 / Methods</div>
-    <div class="sec-body">
-      <h2>How I work</h2>
-      <div class="methods">
-        <div class="method">
-          <h3>Computational</h3>
-          <p>Ansys Fluent — compressible RANS (k-ω SST), DES/DDES, transient, discrete phase model. Structured hex meshing, y⁺ control and grid-convergence studies. Some OpenFOAM and Tecplot.</p>
-        </div>
-        <div class="method">
-          <h3>Experimental</h3>
-          <p>Mach 6 Ludwieg tube operation, Z-type high-speed schlieren with a Phantom VEO 710L, test-model design, and image-based diagnostics.</p>
-        </div>
-        <div class="method">
-          <h3>Analysis</h3>
-          <p>MATLAB for image processing, FFT/PSD, and spectral mode identification — pipelines I write and maintain myself. Also Python, C/C++, Simulink, Origin, LaTeX.</p>
-        </div>
-        <div class="method">
-          <h3>Recognition</h3>
-          <p>Best Industry Internship, Amity Corporate Meet 2026, for the DDES work at IIT Hyderabad. NPTEL axial-flow compressor and launch-vehicle design courses (latter in the top 5%).</p>
-        </div>
-      </div>
-    </div>
+  <h2>Methods</h2>
+  <div class="text">
+    <p><strong>Computational.</strong> Ansys Fluent — compressible RANS (k-ω SST), DES/DDES, transient, discrete phase model. Structured hex meshing, y⁺ control and grid-convergence studies. Some OpenFOAM and Tecplot.</p>
+    <p><strong>Experimental.</strong> Mach 6 Ludwieg tube operation, Z-type high-speed schlieren with a Phantom VEO 710L, test-model design, image-based diagnostics.</p>
+    <p><strong>Analysis.</strong> MATLAB for image processing, FFT/PSD and spectral mode identification — pipelines I write and maintain myself. Also Python, C/C++, Simulink, Origin, LaTeX.</p>
   </div>
 </section>
 
 <section>
-  <div class="sec-head">
-    <div class="sec-label">07 / Next</div>
-    <div class="sec-body">
-      <h2>What I am looking for</h2>
-      <div class="seek">
-        <p><strong>January – May 2027:</strong> a five-month final-semester research project in a high-speed aerodynamics or propulsion group. My seventh semester ends in early December and the final semester carries no coursework, so I can work full time.</p>
-        <p><strong>From Fall 2027:</strong> a PhD, or a research master's leading to one, in high-speed aerodynamics — intake and isolator flows, aerospike and blunt-body aerothermodynamics, shock-induced unsteadiness, or turbomachinery passage aerodynamics. I am equally happy on the experimental and computational sides and would rather do both.</p>
-      </div>
-    </div>
+  <h2>What I am looking for</h2>
+  <div class="well">
+    <p><strong>January – May 2027:</strong> a five-month final-semester research project in a high-speed aerodynamics or propulsion group. My seventh semester ends in early December and the final semester carries no coursework, so I can work full time.</p>
+    <p><strong>From Fall 2027:</strong> a PhD, or a research master's leading to one, in high-speed aerodynamics — intake and isolator flows, aerospike and blunt-body aerothermodynamics, shock-induced unsteadiness, or turbomachinery passage aerodynamics. I am equally happy on the experimental and computational sides, and would rather do both.</p>
   </div>
 </section>
 
 <footer>
   <span>Noida, Uttar Pradesh, India</span>
-  <span>Last updated October 2026</span>
+  <span>Updated October 2026</span>
 </footer>
 
 </div>
@@ -588,6 +473,15 @@ footer{
 document.querySelectorAll("[data-copy]").forEach(function(btn){
   btn.addEventListener("click", function(){
     var text = btn.getAttribute("data-copy");
+    function select(){
+      try{
+        var r = document.createRange();
+        r.selectNodeContents(btn);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+      }catch(e){}
+    }
     function done(){
       var t = document.createElement("div");
       t.className = "toast";
@@ -599,13 +493,6 @@ document.querySelectorAll("[data-copy]").forEach(function(btn){
       navigator.clipboard.writeText(text).then(done, select);
     } else {
       select();
-    }
-    function select(){
-      var r = document.createRange();
-      r.selectNodeContents(btn);
-      var s = window.getSelection();
-      s.removeAllRanges();
-      s.addRange(r);
     }
   });
 });
